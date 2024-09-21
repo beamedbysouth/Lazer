@@ -1,12 +1,456 @@
+-- New example script written by wally
+-- You can suggest changes with a pull request or something
+
+local repo = 'https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/'
+
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+
+local Window = Library:CreateWindow({
+    -- Set Center to true if you want the menu to appear in the center
+    -- Set AutoShow to true if you want the menu to appear when it is created
+    -- Position and Size are also valid options here
+    -- but you do not need to define them unless you are changing them :)
+
+    Title = 'Lazer Da Hood',
+    Center = true,
+    AutoShow = true,
+    TabPadding = 8,
+    MenuFadeTime = 0.2
+})
+
+-- CALLBACK NOTE:
+-- Passing in callback functions via the initial element parameters (i.e. Callback = function(Value)...) works
+-- HOWEVER, using Toggles/Options.INDEX:OnChanged(function(Value) ... ) is the RECOMMENDED way to do this.
+-- I strongly recommend decoupling UI code from logic code. i.e. Create your UI elements FIRST, and THEN setup :OnChanged functions later.
+
+-- You do not have to set your tabs & groups up this way, just a prefrence.
+local Tabs = {
+    -- Creates a new tab titled Main
+    Main = Window:AddTab('Rage'),
+    ['UI Settings'] = Window:AddTab('UI Settings'),
+}
+
+-- Groupbox and Tabbox inherit the same functions
+-- except Tabboxes you have to call the functions on a tab (Tabbox:AddTab(name))
+local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+
+-- We can also get our Main tab via the following code:
+-- local LeftGroupBox = Window.Tabs.Main:AddLeftGroupbox('Groupbox')
+
+-- Tabboxes are a tiny bit different, but here's a basic example:
 --[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.7) ~  Much Love, Ferib 
 
-]]--
+local TabBox = Tabs.Main:AddLeftTabbox() -- Add Tabbox on left side
 
-local v0=tonumber;local v1=string.byte;local v2=string.char;local v3=string.sub;local v4=string.gsub;local v5=string.rep;local v6=table.concat;local v7=table.insert;local v8=math.ldexp;local v9=getfenv or function() return _ENV;end ;local v10=setmetatable;local v11=pcall;local v12=select;local v13=unpack or table.unpack ;local v14=tonumber;local function v15(v16,v17,...) local v18=1;local v19;v16=v4(v3(v16,5),"..",function(v30) if (v1(v30,2)==79) then v19=v0(v3(v30,1,1));return "";else local v82=v2(v0(v30,16));if v19 then local v89=0;local v90;while true do if (v89==1) then return v90;end if (v89==0) then v90=v5(v82,v19);v19=nil;v89=1;end end else return v82;end end end);local function v20(v31,v32,v33) if v33 then local v83=0 -0 ;local v84;while true do if (v83==(0 -0)) then v84=(v31/((1 + (118 -(32 + 85)))^(v32-(878 -(282 + 595)))))%(((1 + 2) -1)^(((v33-(2 -1)) -(v32-(1 -(0 + 0)))) + (620 -(555 + 64)))) ;return v84-(v84%(1066 -(68 + 997))) ;end end else local v85=(933 -(857 + 74))^(v32-(1271 -(226 + 1044))) ;return (((v31%(v85 + v85))>=v85) and 1) or (568 -(367 + (479 -278))) ;end end local function v21() local v34=(180 -(67 + 113)) -0 ;local v35;while true do if (v34==(0 -0)) then v35=v1(v16,v18,v18);v18=v18 + (351 -(87 + 263)) ;v34=1;end if (v34==1) then return v35;end end end local function v22() local v36,v37=v1(v16,v18,v18 + 2 );v18=v18 + 2 + 0 ;return (v37 * (628 -372)) + v36 ;end local function v23() local v38,v39,v40,v41=v1(v16,v18,v18 + 3 + 0 );v18=v18 + ((11 + 4) -11) ;return (v41 * (16778168 -(802 + (1147 -(915 + 82))))) + (v40 * (176444 -110908)) + (v39 * (464 -208)) + v38 ;end local function v24() local v42=v23();local v43=v23();local v44=2 -1 ;local v45=(v20(v43,1 + 0 ,20) * ((2 -0)^((1657 -(145 + 293)) -(1069 + (548 -(44 + 386)))))) + v42 ;local v46=v20(v43,47 -26 ,31);local v47=((v20(v43,32)==(1 -0)) and  -(1 + 0)) or (1 -0) ;if (v46==(0 + (1486 -(998 + 488)))) then if (v45==(791 -(368 + 423))) then return v47 * ((0 + 0) -0) ;else v46=1;v44=18 -(10 + 8) ;end elseif (v46==(7874 -5827)) then return ((v45==0) and (v47 * ((443 -(416 + 26))/(0 -0)))) or (v47 * NaN) ;end return v8(v47,v46-(440 + 583) ) * (v44 + (v45/(((3 + 0) -1)^52))) ;end local function v25(v48) local v49;if  not v48 then v48=v23();if (v48==(772 -(201 + 571))) then return "";end end v49=v3(v16,v18,(v18 + v48) -(1139 -(116 + 1022)) );v18=v18 + v48 ;local v50={};for v65=1, #v49 do v50[v65]=v2(v1(v3(v49,v65,v65)));end return v6(v50);end local v26=v23;local function v27(...) return {...},v12("#",...);end local function v28() local v51=(function() return 0 -0 ;end)();local v52=(function() return;end)();local v53=(function() return;end)();local v54=(function() return;end)();local v55=(function() return;end)();local v56=(function() return;end)();local v57=(function() return;end)();local v58=(function() return;end)();while true do local v67=(function() return 651 -(494 + 157) ;end)();while true do if (v67==0) then if (v51~=(0 -0)) then else local v95=(function() return 0;end)();local v96=(function() return;end)();while true do if (v95==0) then v96=(function() return 0 + 0 ;end)();while true do if (v96~=(0 + 0)) then else v52=(function() return function(v150,v151,v152) local v153=(function() return 0;end)();while true do if ((0 + 0)==v153) then local v247=(function() return 0;end)();while true do if (v247==0) then v150[v151-#"[" ]=(function() return v152();end)();return v150,v151,v152;end end end end end;end)();v53=(function() return {};end)();v96=(function() return 1;end)();end if (v96~=1) then else v54=(function() return {};end)();v51=(function() return 1;end)();break;end end break;end end end if (2~=v51) then else local v97=(function() return 0;end)();local v98=(function() return;end)();while true do if (v97==(836 -(660 + 176))) then v98=(function() return 0;end)();while true do if ((0 + 0)==v98) then v58=(function() return {};end)();for v141= #"\\",v57 do local v142=(function() return 202 -(14 + 188) ;end)();local v143=(function() return;end)();local v144=(function() return;end)();local v145=(function() return;end)();while true do if ((675 -(534 + 141))==v142) then local v229=(function() return 0;end)();while true do if (v229==0) then v143=(function() return 0;end)();v144=(function() return nil;end)();v229=(function() return 1 + 0 ;end)();end if (v229~=(1 + 0)) then else v142=(function() return 1;end)();break;end end end if (v142~=1) then else v145=(function() return nil;end)();while true do if (v143~=(1 + 0)) then else if (v144== #",") then v145=(function() return v21()~=(0 -0) ;end)();elseif (v144==(2 -0)) then v145=(function() return v24();end)();elseif (v144== #"91(") then v145=(function() return v25();end)();end v58[v141]=(function() return v145;end)();break;end if (v143~=0) then else local v274=(function() return 0;end)();while true do if (v274==(0 -0)) then v144=(function() return v21();end)();v145=(function() return nil;end)();v274=(function() return 1 + 0 ;end)();end if (v274==1) then v143=(function() return 1 + 0 ;end)();break;end end end end break;end end end v98=(function() return 397 -(115 + 281) ;end)();end if (v98==1) then v56[ #"xnx"]=(function() return v21();end)();v51=(function() return 6 -3 ;end)();break;end end break;end end end v67=(function() return 1 + 0 ;end)();end if (v67~=1) then else if (v51==3) then for v100= #"~",v23() do local v101=(function() return v21();end)();if (v20(v101, #"}", #"{")~=(0 -0)) then else local v103=(function() return 0 -0 ;end)();local v104=(function() return;end)();local v105=(function() return;end)();local v106=(function() return;end)();while true do if (2~=v103) then else if (v20(v105, #"\\", #"!")== #",") then v106[2]=(function() return v58[v106[2]];end)();end if (v20(v105,2,869 -(550 + 317) )~= #"~") then else v106[ #"-19"]=(function() return v58[v106[ #"asd"]];end)();end v103=(function() return 3;end)();end if (v103==0) then v104=(function() return v20(v101,2, #"91(");end)();v105=(function() return v20(v101, #".dev",8 -2 );end)();v103=(function() return 1;end)();end if (v103~=(1 -0)) then else local v108=(function() return 0;end)();local v109=(function() return;end)();while true do if (v108==0) then v109=(function() return 0 -0 ;end)();while true do if (v109==(285 -(134 + 151))) then v106=(function() return {v22(),v22(),nil,nil};end)();if (v104==(0 -0)) then local v284=(function() return 0;end)();local v285=(function() return;end)();while true do if (v284~=(1990 -(582 + 1408))) then else v285=(function() return 0;end)();while true do if ((0 -0)==v285) then v106[ #"-19"]=(function() return v22();end)();v106[ #"asd1"]=(function() return v22();end)();break;end end break;end end elseif (v104== #"!") then v106[ #"91("]=(function() return v23();end)();elseif (v104==2) then v106[ #"91("]=(function() return v23() -(2^(19 -3)) ;end)();elseif (v104== #"xxx") then local v309=(function() return 0;end)();local v310=(function() return;end)();while true do if (v309==(0 -0)) then v310=(function() return 0;end)();while true do if (v310==0) then v106[ #"-19"]=(function() return v23() -(2^16) ;end)();v106[ #"xnxx"]=(function() return v22();end)();break;end end break;end end end v109=(function() return 1;end)();end if (v109==(1825 -(1195 + 629))) then v103=(function() return 2 -0 ;end)();break;end end break;end end end if (v103==(244 -(187 + 54))) then if (v20(v105, #"gha", #"asd")~= #"!") then else v106[ #"xnxx"]=(function() return v58[v106[ #"0313"]];end)();end v53[v100]=(function() return v106;end)();break;end end end end for v102= #"~",v23() do v54,v102,v28=(function() return v52(v54,v102,v28);end)();end return v56;end if (v51==(781 -(162 + 618))) then local v99=(function() return 0;end)();while true do if (v99==(0 + 0)) then v55=(function() return {};end)();v56=(function() return {v53,v54,nil,v55};end)();v99=(function() return 1 -0 ;end)();end if (v99==1) then v57=(function() return v23();end)();v51=(function() return 2 -0 ;end)();break;end end end break;end end end end local function v29(v59,v60,v61) local v62=v59[1 + 0 ];local v63=v59[1 + 1 ];local v64=v59[1639 -(1373 + 263) ];return function(...) local v68=v62;local v69=v63;local v70=v64;local v71=v27;local v72=1001 -(451 + 549) ;local v73= -(1 + 0);local v74={};local v75={...};local v76=v12("#",...) -((524 -(423 + 100)) -0) ;local v77={};local v78={};for v86=0,v76 do if (v86>=v70) then v74[v86-v70 ]=v75[v86 + (1385 -(746 + 638)) ];else v78[v86]=v75[v86 + 1 + 0 ];end end local v79=(v76-v70) + ((1 + 1) -1) ;local v80;local v81;while true do v80=v68[v72];v81=v80[(2 -1) -0 ];if (v81<=(364 -(218 + 123))) then if ((3891<4919) and (1999<=2364) and (v81<=(15 -4))) then if (v81<=(1586 -(1535 + 46))) then if ((v81<=((87 + 78) -(92 + 71))) or (2234<=1502)) then if ((v81<=(0 + 0)) or (2512<432)) then local v111=v80[1 + 2 ];local v112=v78[v111];for v146=v111 + (561 -(306 + 254)) ,v80[769 -(574 + 191) ] do v112=v112   .. v78[v146] ;end v78[v80[1 + 1 ]]=v112;elseif ((v81==(1 -0)) or (1848==865)) then local v157=v80[1469 -(899 + 568) ];v78[v157](v13(v78,v157 + 1 + (771 -(326 + 445)) ,v80[7 -4 ]));else v78[v80[605 -((1169 -901) + 335) ]]=v78[v80[1793 -(573 + 1217) ]][v80[10 -6 ]];end elseif (v81<=3) then v78[v80[4 -2 ]]={};elseif ((v81==(294 -(60 + (536 -306)))) or (4922<194)) then local v160=v80[(713 -(530 + 181)) -0 ];v78[v160]=v78[v160](v13(v78,v160 + (573 -(426 + 146)) ,v73));else v78[v80[1 + 1 ]]={};end elseif ((v81<=(1464 -(282 + 1174))) or (4682<=4541)) then if ((v81<=(1 + 5)) or (2091<31)) then local v115=811 -(569 + 242) ;local v116;local v117;local v118;while true do if (v115==(5 -3)) then for v230=1 + 0 ,v80[1028 -(706 + 318) ] do local v231=0 + 0 ;local v232;while true do if ((v231==(1251 -(721 + 530))) or (3026>=4046)) then v72=v72 + (1272 -(945 + 326)) ;v232=v68[v72];v231=2 -1 ;end if ((2008>638) and (v231==(1 + 0))) then if ((1775<=3233) and (v232[3 -2 ]==((1588 -(614 + 267)) -(271 + 429)))) then v118[v230-(1 + 0) ]={v78,v232[1503 -(1408 + 92) ]};else v118[v230-1 ]={v60,v232[1291 -(993 + 295) ]};end v77[ #v77 + 1 + 0 ]=v118;break;end end end v78[v80[1173 -(418 + 753) ]]=v29(v116,v117,v61);break;end if ((v115==(1 + 0)) or (2430>=4872)) then v118={};v117=v10({},{__index=function(v233,v234) local v235=v118[v234];return v235[1][v235[1 + 1 ]];end,__newindex=function(v236,v237,v238) local v239=v118[v237];v239[1 + 0 ][v239[1 + 1 ]]=v238;end});v115=531 -(406 + 123) ;end if ((v115==(0 + 0)) or (4770<1735)) then v116=v69[v80[1772 -(1749 + 20) ]];v117=nil;v115=1 + 0 ;end end elseif ((v81==(540 -(43 + 490))) or (4439<=2350)) then v78[v80[1324 -(1249 + 73) ]]=v78[v80[2 + 1 ]];elseif ((v80[7 -(2 + 3) ]==v78[v80[(2020 -871) -(466 + 679) ]]) or (4543==1997)) then v72=v72 + (2 -1) ;else v72=v80[8 -5 ];end elseif ((v81<=(1909 -(106 + 1794))) or (3102<728)) then do return;end elseif ((345==345) and (v81>(4 + 6))) then if ((v78[v80[1 + 1 ]]==v80[11 -7 ]) or (4479<4466)) then v72=v72 + 1 + (0 -0) ;else v72=v80[7 -4 ];end else local v165=v80[116 -(4 + 110) ];v78[v165]=v78[v165](v13(v78,v165 + (585 -(57 + 527)) ,v80[1430 -((1853 -(1293 + 519)) + 1386) ]));end elseif ((v81<=17) or (2827<378)) then if ((2547>1225) and (v81<=(117 -(17 + 86)))) then if (v81<=12) then local v119=v80[(3 -1) + 0 ];v78[v119](v78[v119 + (1 -0) ]);elseif (v81>(37 -24)) then v78[v80[168 -(122 + 44) ]]=v61[v80[5 -2 ]];else for v217=v80[(15 -9) -4 ],v80[3 + 0 ] do v78[v217]=nil;end end elseif ((4671>2674) and (v81<=(464 -((206 -98) + 341)))) then v78[v80[1 + 1 ]]=v29(v69[v80[3]],nil,v61);elseif (v81>((137 -105) -16)) then v78[v80[2]][v80[3]]=v78[v80[69 -((70 -40) + 35) ]];else local v171=0 + 0 ;local v172;local v173;local v174;while true do if ((v171==(1257 -(1043 + 114 + 100))) or (3476<2597)) then v172=v69[v80[(3 + 8) -8 ]];v173=nil;v171=1213 -(323 + 889) ;end if (v171==(5 -3)) then for v261=2 -1 ,v80[584 -((838 -477) + 219) ] do local v262=320 -(53 + 267) ;local v263;while true do if ((3079<4794) and (v262==(1 + 0 + 0))) then if ((4854>4464) and ((v263[1 + 0 ]==(420 -(5 + 10 + 249 + 149))) or (3696<3327))) then v174[v261-(1168 -(645 + 522)) ]={v78,v263[2 + 1 ]};else v174[v261-(1 + (1096 -(709 + 387))) ]={v60,v263[129 -(116 + 10) ]};end v77[ #v77 + 1 + 0 ]=v174;break;end if (v262==(1574 -(1281 + 293))) then v72=v72 + 1 ;v263=v68[v72];v262=267 -(28 + 238) ;end end end v78[v80[2]]=v29(v172,v173,v61);break;end if (v171==(739 -(542 + 196))) then v174={};v173=v10({},{__index=function(v264,v265) local v266=v174[v265];return v266[1859 -(673 + 1185) ][v266[3 -1 ]];end,__newindex=function(v267,v268,v269) local v270=0 + 0 ;local v271;while true do if (v270==(0 + 0)) then v271=v174[v268];v271[1 + 0 ][v271[4 -2 ]]=v269;break;end end end});v171=2;end end end elseif (v81<=(51 -31)) then if (v81<=(1569 -(1126 + 425))) then local v121=v80[2 + 0 ];local v122={};for v147=406 -((342 -224) + 287) , #v77 do local v148=0 -0 ;local v149;while true do if (v148==(1121 -(118 + 1003))) then v149=v77[v147];for v250=0 -(0 -0) , #v149 do local v251=377 -(142 + 235) ;local v252;local v253;local v254;while true do if ((v251==(0 -0)) or (4542==2970)) then v252=v149[v250];v253=v252[1 -0 ];v251=1 + 0 ;end if ((v251==((1 -0) -0)) or (4912==3758)) then v254=v252[1786 -(214 + 1570) ];if ((v253==v78) and (v254>=v121)) then local v297=977 -(553 + 424) ;while true do if ((0 -0)==v297) then v122[v254]=v253[v254];v252[1 + 0 ]=v122;break;end end end break;end end end break;end end end elseif ((126<=3482) and (252<=1977) and (v81==(19 + 0))) then local v175=v80[2 + 1 ];local v176=v78[v175];for v219=v175 + (1727 -(1668 + 58)) ,v80[630 -(512 + 114) ] do v176=v176   .. v78[v219] ;end v78[v80[1 + 1 ]]=v176;else local v178=0;local v179;while true do if ((v178==(0 + 0)) or (1436==3775)) then v179=v80[4 -2 ];v78[v179]=v78[v179](v78[v179 + (1 -0) ]);break;end end end elseif ((v81<=(58 -(27 + 10))) or (1618<930)) then v78[v80[4 -2 ]]=v60[v80[1 + 2 ]];elseif (v81>(7 + 15)) then if (v80[6 -4 ]==v78[v80[19 -15 ]]) then v72=v72 + (754 -(239 + 514)) ;else v72=v80[2 + 1 ];end else v78[v80[2]][v80[1332 -(797 + 532) ]]=v78[v80[819 -(74 + 24 + 717) ]];end elseif (v81<=(26 + 9)) then if ((4723>4153) and (v81<=(10 + 19))) then if (v81<=(60 -34)) then if ((v81<=(1226 -(373 + (1118 -289)))) or (3654>=4654)) then local v125=v80[733 -(476 + 255) ];local v126=v78[v80[1133 -(91 + 278 + 761) ]];v78[v125 + 1 + 0 ]=v126;v78[v125]=v126[v80[3 + (1 -0) ]];elseif (v81>(45 -(39 -19))) then v78[v80[1 + 1 ]]=v29(v69[v80[8 -5 ]],nil,v61);else v78[v80[3 -1 ]][v80[241 -(64 + (2054 -(446 + 1434))) ]]=v80[1 + 3 ];end elseif (((951<=1496) and (v81<=((1322 -(1040 + 243)) -12))) or (2374==4374)) then local v130=v80[2];v78[v130](v13(v78,v130 + (337 -(144 + 192)) ,v80[219 -(42 + 174) ]));elseif ((1575==1575) and (v81==(22 + 6))) then v78[v80[2 + 0 ]]=v61[v80[3 + 0 ]];else v78[v80[1 + 1 ]]=v80[1507 -(363 + 1141) ];end elseif ((v81<=32) or (1736==571) or (2234==1455)) then if (v81<=(1610 -(1183 + 397))) then local v131=v80[5 -3 ];v78[v131](v78[v131 + (1434 -(797 + 636)) ]);elseif ((v81>31) or (896>4769)) then v78[v80[2 + 0 ]]=v80[3 + 0 ];else local v191=v80[1621 -(1427 + 192) ];local v192,v193=v71(v78[v191](v13(v78,v191 + (1976 -(1913 + 62)) ,v80[2 + 1 ])));v73=(v193 + v191) -(2 -1) ;local v194=1933 -(565 + 1368) ;for v220=v191,v73 do v194=v194 + (3 -2) ;v78[v220]=v192[v194];end end elseif (v81<=(1694 -(1477 + 184))) then do return;end elseif (v81>(19 + 15)) then for v223=v80[(5 -3) -0 ],v80[3 + 0 ] do v78[v223]=nil;end else local v195=v80[858 -(564 + 292) ];local v196=v78[v80[4 -(1848 -(559 + 1288)) ]];v78[v195 + ((1934 -(609 + 1322)) -(456 -(13 + 441))) ]=v196;v78[v195]=v196[v80[11 -7 ]];end elseif (v81<=(345 -(244 + (224 -164)))) then if (v81<=(30 + 8)) then if (v81<=(512 -(41 + 435))) then v78[v80[1003 -(938 + 63) ]]=v78[v80[3]];elseif ((v81>(29 + 8)) or (1067>1779)) then v78[v80[1127 -(936 + 189) ]][v80[1 + 2 ]]=v80[(4235 -2618) -(1565 + 48) ];else v72=v80[2 + 1 ];end elseif (v81<=(1177 -(782 + 356))) then v78[v80[2]]=v60[v80[270 -(176 + 91) ]];elseif (v81>(104 -64)) then local v203=v80[2 -(0 -0) ];v78[v203]=v78[v203](v13(v78,v203 + (1093 -(975 + 117)) ,v73));else v72=v80[1878 -(157 + 1718) ];end elseif (v81<=(1816 -(1733 + 39))) then if (v81<=(2 + 33 + (25 -18))) then local v136=0 -0 ;local v137;local v138;local v139;local v140;while true do if (v136==(1948 -(1096 + 852))) then v137=v80[6 -4 ];v138,v139=v71(v78[v137](v13(v78,v137 + (1019 -(697 + 321)) ,v80[7 -4 ])));v136=1 -0 ;end if ((v136==(2 -(1 + 0))) or (1045<=1020)) then v73=(v139 + v137) -(1 + 0 + 0) ;v140=0 -0 ;v136=5 -3 ;end if (v136==(1229 -(322 + 905))) then for v245=v137,v73 do local v246=611 -(602 + (26 -17)) ;while true do if (v246==((651 + 538) -(449 + (1361 -621)))) then v140=v140 + (873 -(826 + 46)) ;v78[v245]=v138[v140];break;end end end break;end end elseif (v81>((655 + 335) -(245 + 702))) then local v206=0 + 0 ;local v207;while true do if ((0 + 0 + 0)==v206) then v207=v80[6 -4 ];v78[v207]=v78[v207](v13(v78,v207 + 1 + 0 ,v80[1901 -(260 + 1638) ]));break;end end else v78[v80[442 -(275 + 107 + 58) ]]=v78[v80[9 -(6 + 0) ]][v80[4 + 0 ]];end elseif ((v81<=((91 + 1) -47)) or (1160<=328)) then if (v78[v80[5 -3 ]]==v80[(1642 -(153 + 280)) -(902 + 303) ]) then v72=v72 + (1 -0) ;else v72=v80[6 -(8 -5) ];end elseif ((2161>=934) and (v81>(4 + 42))) then local v211=v80[(1520 + 172) -(1121 + 569) ];local v212={};for v226=215 -(9 + 13 + 192) , #v77 do local v227=683 -(253 + 230 + 200) ;local v228;while true do if ((3808>2924) and (((1328 + 135) -(1404 + 43 + 16))==v227)) then v228=v77[v226];for v279=(0 -0) -0 , #v228 do local v280=v228[v279];local v281=v280[2 -1 ];local v282=v280[2 -0 ];if ((v281==v78) and (v282>=v211)) then local v295=0 -0 ;while true do if (v295==(765 -(468 + 184 + 113))) then v212[v282]=v281[v282];v280[563 -(334 + 228) ]=v212;break;end end end end break;end end end else local v213=0 -0 ;local v214;while true do if (v213==(0 -(667 -(89 + 578)))) then v214=v80[(2 + 0) -(0 -0) ];v78[v214]=v78[v214](v78[v214 + 1 + 0 ]);break;end end end v72=v72 + (237 -(141 + 95)) ;end end;end return v29(v28(),{},v17)(...);end return v15("LOL!4F3O00030A3O006C6F6164737472696E6703043O0067616D6503073O00482O747047657403483O00682O7470733A2O2F7261772E67697468756275736572636F6E74656E742E636F6D2F746F706974626F7069742F646F2O6C6172776172652F6D61696E2F6C6962726172792E6C756103083O00726F756E64696E67010003053O007468656D6503063O006368652O7279030E3O00736D2O6F74684472612O67696E672O0103123O006175746F44697361626C65546F2O676C657303093O006E657757696E646F7703043O007465787403093O004C617A65727761726503063O00726573697A6503043O0073697A6503073O00566563746F72322O033O006E6577025O00308140025O0080774003083O00706F736974696F6E0003073O00612O644D656E7503043O0052616765028O00026O00F03F030A3O00612O6453656374696F6E03093O0073656374696F6E203203043O007369646503053O007269676874030D3O0073686F774D696E42752O746F6E03093O00612O64536C6964657203063O00736C696465722O033O006D696E2O033O006D6178025O00C0624003043O0073746570027B14AE47E17A843F2O033O0076616C026O004940030A3O00736574542O6F6C746970030F3O004865726573206120736C6964657221030E3O00612O64436F6C6F725069636B6572030C3O00636F6C6F72207069636B657203053O00636F6C6F7203063O00436F6C6F723303073O0066726F6D524742025O00E06F40030A3O00612O6454657874626F7803073O0074657874626F78030B3O0062696E64546F4576656E74030B3O006F6E466F6375734C6F737403063O0041696D626F7403043O006175746F026O00084003093O00736574486F746B657903043O00456E756D03073O004B6579436F646503013O004703263O0054686973206973206120686F746B6579206C696E6B656420746F2074686520746F2O676C6521026O001040030D3O006C696E6B546F436F6E74726F6C03083O00612O644C6162656C03093O00612O64546F2O676C6503063O00746F2O676C6503053O007374617465027O004003093O00612O6442752O746F6E030E3O0062752O746F6E20286C617267652903053O007374796C6503053O006C6172676503163O00746869732069732061206C617267652062752O746F6E03093O00612O64486F746B657903063O00686F746B657903083O006F6E546F2O676C65030E3O0062752O746F6E2028736D612O6C2903053O00736D612O6C03073O006F6E436C69636B03063O006D656E75203200CA3O00121C3O00013O00121C000100023O00202200010001000300121D000300044O001F000100034O00045O00022O002400016O000500023O000300301900020005000600301900020007000800301900020009000A2O00140001000200020030190001000B000A00200200020001000C2O000500033O00040030190003000D000E0030190003000F000A00121C000400113O00200200040004001200121D000500133O00121D000600144O002C0004000600020010160003001000040030190003001500162O00140002000200020020220003000200172O000500053O00010030190005000D00182O002C00030005000200121D000400194O0023000500053O00262D000400520001001A0004253O0052000100202200060003001B2O000500083O00030030190008000D001C0030190008001D001E0030190008001F00062O002C0006000800022O0024000500063O00121D000600193O00262D00060044000100190004253O004400010020220007000500202O000500093O00050030190009000D002100301900090022001A00301900090023002400301900090025002600301900090027002800020F000A6O002C0007000A000200202200070007002900121D0009002A4O001B00070009000100202200070005002B2O000500093O00020030190009000D002C00121C000A002E3O002002000A000A002F00121D000B00303O00121D000C00193O00121D000D00194O002C000A000D00020010160009002D000A00020F000A00014O001B0007000A000100121D0006001A3O00262D000600290001001A0004253O002900010020220007000500312O000500093O00010030190009000D00322O002C00070009000200202200070007003300121D000900343O002O06000A0002000100012O00073O00014O001B0007000A00010004253O00C400010004253O002900010004253O00C4000100262D0004001F000100190004253O001F000100121D000600193O00262D000600590001001A0004253O0059000100121D0004001A3O0004253O001F0001000E1700190055000100060004253O0055000100202200070003001B2O000500093O00030030190009000D00350030190009001D00360030190009001F000A2O002C0007000900022O0024000500073O00121D000700194O00230008000A3O00262D00070069000100190004253O0069000100121D000800194O0023000900093O00121D0007001A3O00262D000700640001001A0004253O006400012O0023000A000A3O00262D0008007F000100370004253O007F000100121D000B00193O00262D000B007A000100190004253O007A0001002022000C000A003800121C000E00393O002002000E000E003A002002000E000E003B2O001B000C000E0001002022000C000A002900121D000E003C4O001B000C000E000100121D000B001A3O00262D000B006F0001001A0004253O006F000100121D0008003D3O0004253O007F00010004253O006F000100262D000800850001003D0004253O00850001002022000B000A003E2O0024000D00094O001B000B000D00010004253O00C1000100262D00080092000100190004253O00920001002022000B0005003F2O0005000D3O0001003019000D000D000D2O001B000B000D0001002022000B000500402O0005000D3O0002003019000D000D0041003019000D004200062O002C000B000D00022O00240009000B3O00121D0008001A3O00262D000800AC000100430004253O00AC000100121D000B00193O00262D000B00990001001A0004253O0099000100121D000800373O0004253O00AC000100262D000B0095000100190004253O00950001002022000C000500442O0005000E3O0002003019000E000D0045003019000E00460047002O06000F0003000100012O00073O00014O002C000C000F0002002022000C000C002900121D000E00484O001B000C000E0001002022000C000500492O0005000E3O0001003019000E000D004A2O002C000C000E00022O0024000A000C3O00121D000B001A3O0004253O0095000100262D0008006C0001001A0004253O006C0001002022000B0009003300121D000D004B3O002O06000E0004000100012O00073O00014O001B000B000E0001002022000B000500442O0005000D3O0002003019000D000D004C003019000D0046004D2O002C000B000D0002002022000B000B003300121D000D004E3O002O06000E0005000100012O00073O00014O001B000B000E000100121D000800433O0004253O006C00010004253O00C100010004253O0064000100121D0006001A3O0004253O005500010004253O001F00010020220004000200172O000500063O00010030190006000D004F2O001B0004000600012O00128O00093O00013O00063O00013O0003053O007072696E7401043O00121C000100014O002400026O000C0001000200012O00093O00017O00013O0003053O007072696E7401043O00121C000100014O002400026O000C0001000200012O00093O00017O00063O0003063O006E6F7469667903053O007469746C6503073O0074657874626F7803073O006D652O7361676503083O006475726174696F6E026O00104001084O001500015O0020020001000100012O000500023O0003003019000200020003001016000200043O0030190002000500062O000C0001000200012O00093O00017O00073O0003063O006E6F7469667903053O007469746C6503063O0062752O746F6E03073O006D652O73616765031D3O00546865206C617267652062752O746F6E20676F7420636C69636B65642103083O006475726174696F6E026O00084000084O00157O0020025O00012O000500013O00030030190001000200030030190001000400050030190001000600072O000C3O000200012O00093O00017O00083O0003063O006E6F7469667903053O007469746C6503063O00746F2O676C6503073O006D652O7361676503163O00546F2O676C652077617320746F2O676C656420746F2003083O00746F737472696E6703083O006475726174696F6E026O000840010D4O001500015O0020020001000100012O000500023O000300301900020002000300121D000300053O00121C000400064O002400056O00140004000200022O00130003000300040010160002000400030030190002000700082O000C0001000200012O00093O00017O00073O0003063O006E6F7469667903053O007469746C6503063O0062752O746F6E03073O006D652O7361676503173O005468652062752O746F6E20676F7420636C69636B65642103083O006475726174696F6E026O00084000084O00157O0020025O00012O000500013O00030030190001000200030030190001000400050030190001000600072O000C3O000200012O00093O00017O00",v9(),...);
+local Tab1 = TabBox:AddTab('Tab 1')
+local Tab2 = TabBox:AddTab('Tab 2')
+
+-- You can now call AddToggle, etc on the tabs you added to the Tabbox
+]]
+
+-- Groupbox:AddToggle
+-- Arguments: Index, Options
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'This is a toggle',
+    Default = true, -- Default value (true / false)
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
+
+    Callback = function(Value)
+        print('[cb] MyToggle changed to:', Value)
+    end
+})
+
+
+-- Fetching a toggle object for later use:
+-- Toggles.MyToggle.Value
+
+-- Toggles is a table added to getgenv() by the library
+-- You index Toggles with the specified index, in this case it is 'MyToggle'
+-- To get the state of the toggle you do toggle.Value
+
+-- Calls the passed function when the toggle is updated
+Toggles.MyToggle:OnChanged(function()
+    -- here we get our toggle object & then get its value
+    print('MyToggle changed to:', Toggles.MyToggle.Value)
+end)
+
+-- This should print to the console: "My toggle state changed! New value: false"
+Toggles.MyToggle:SetValue(false)
+
+-- 1/15/23
+-- Deprecated old way of creating buttons in favor of using a table
+-- Added DoubleClick button functionality
+
+--[[
+    Groupbox:AddButton
+    Arguments: {
+        Text = string,
+        Func = function,
+        DoubleClick = boolean
+        Tooltip = string,
+    }
+
+    You can call :AddButton on a button to add a SubButton!
+]]
+
+local MyButton = LeftGroupBox:AddButton({
+    Text = 'Button',
+    Func = function()
+        print('You clicked a button!')
+    end,
+    DoubleClick = false,
+    Tooltip = 'This is the main button'
+})
+
+local MyButton2 = MyButton:AddButton({
+    Text = 'Sub button',
+    Func = function()
+        print('You clicked a sub button!')
+    end,
+    DoubleClick = true, -- You will have to click this button twice to trigger the callback
+    Tooltip = 'This is the sub button (double click me!)'
+})
+
+--[[
+    NOTE: You can chain the button methods!
+    EXAMPLE:
+
+    LeftGroupBox:AddButton({ Text = 'Kill all', Func = Functions.KillAll, Tooltip = 'This will kill everyone in the game!' })
+        :AddButton({ Text = 'Kick all', Func = Functions.KickAll, Tooltip = 'This will kick everyone in the game!' })
+]]
+
+-- Groupbox:AddLabel
+-- Arguments: Text, DoesWrap
+LeftGroupBox:AddLabel('This is a label')
+LeftGroupBox:AddLabel('This is a label\n\nwhich wraps its text!', true)
+
+-- Groupbox:AddDivider
+-- Arguments: None
+LeftGroupBox:AddDivider()
+
+--[[
+    Groupbox:AddSlider
+    Arguments: Idx, SliderOptions
+
+    SliderOptions: {
+        Text = string,
+        Default = number,
+        Min = number,
+        Max = number,
+        Suffix = string,
+        Rounding = number,
+        Compact = boolean,
+        HideMax = boolean,
+    }
+
+    Text, Default, Min, Max, Rounding must be specified.
+    Suffix is optional.
+    Rounding is the number of decimal places for precision.
+
+    Compact will hide the title label of the Slider
+
+    HideMax will only display the value instead of the value & max value of the slider
+    Compact will do the same thing
+]]
+LeftGroupBox:AddSlider('MySlider', {
+    Text = 'This is my slider!',
+    Default = 0,
+    Min = 0,
+    Max = 5,
+    Rounding = 1,
+    Compact = false,
+
+    Callback = function(Value)
+        print('[cb] MySlider was changed! New value:', Value)
+    end
+})
+
+-- Options is a table added to getgenv() by the library
+-- You index Options with the specified index, in this case it is 'MySlider'
+-- To get the value of the slider you do slider.Value
+
+local Number = Options.MySlider.Value
+Options.MySlider:OnChanged(function()
+    print('MySlider was changed! New value:', Options.MySlider.Value)
+end)
+
+-- This should print to the console: "MySlider was changed! New value: 3"
+Options.MySlider:SetValue(3)
+
+-- Groupbox:AddInput
+-- Arguments: Idx, Info
+LeftGroupBox:AddInput('MyTextbox', {
+    Default = 'My textbox!',
+    Numeric = false, -- true / false, only allows numbers
+    Finished = false, -- true / false, only calls callback when you press enter
+
+    Text = 'This is a textbox',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+
+    Placeholder = 'Placeholder text', -- placeholder text when the box is empty
+    -- MaxLength is also an option which is the max length of the text
+
+    Callback = function(Value)
+        print('[cb] Text updated. New text:', Value)
+    end
+})
+
+Options.MyTextbox:OnChanged(function()
+    print('Text updated. New text:', Options.MyTextbox.Value)
+end)
+
+-- Groupbox:AddDropdown
+-- Arguments: Idx, Info
+
+LeftGroupBox:AddDropdown('MyDropdown', {
+    Values = { 'This', 'is', 'a', 'dropdown' },
+    Default = 1, -- number index of the value / string
+    Multi = false, -- true / false, allows multiple choices to be selected
+
+    Text = 'A dropdown',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+
+    Callback = function(Value)
+        print('[cb] Dropdown got changed. New value:', Value)
+    end
+})
+
+Options.MyDropdown:OnChanged(function()
+    print('Dropdown got changed. New value:', Options.MyDropdown.Value)
+end)
+
+Options.MyDropdown:SetValue('This')
+
+-- Multi dropdowns
+LeftGroupBox:AddDropdown('MyMultiDropdown', {
+    -- Default is the numeric index (e.g. "This" would be 1 since it if first in the values list)
+    -- Default also accepts a string as well
+
+    -- Currently you can not set multiple values with a dropdown
+
+    Values = { 'This', 'is', 'a', 'dropdown' },
+    Default = 1,
+    Multi = true, -- true / false, allows multiple choices to be selected
+
+    Text = 'A dropdown',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+
+    Callback = function(Value)
+        print('[cb] Multi dropdown got changed:', Value)
+    end
+})
+
+Options.MyMultiDropdown:OnChanged(function()
+    -- print('Dropdown got changed. New value:', )
+    print('Multi dropdown got changed:')
+    for key, value in next, Options.MyMultiDropdown.Value do
+        print(key, value) -- should print something like This, true
+    end
+end)
+
+Options.MyMultiDropdown:SetValue({
+    This = true,
+    is = true,
+})
+
+LeftGroupBox:AddDropdown('MyPlayerDropdown', {
+    SpecialType = 'Player',
+    Text = 'A player dropdown',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+
+    Callback = function(Value)
+        print('[cb] Player dropdown got changed:', Value)
+    end
+})
+
+-- Label:AddColorPicker
+-- Arguments: Idx, Info
+
+-- You can also ColorPicker & KeyPicker to a Toggle as well
+
+LeftGroupBox:AddLabel('Color'):AddColorPicker('ColorPicker', {
+    Default = Color3.new(0, 1, 0), -- Bright green
+    Title = 'Some color', -- Optional. Allows you to have a custom color picker title (when you open it)
+    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
+
+    Callback = function(Value)
+        print('[cb] Color changed!', Value)
+    end
+})
+
+Options.ColorPicker:OnChanged(function()
+    print('Color changed!', Options.ColorPicker.Value)
+    print('Transparency changed!', Options.ColorPicker.Transparency)
+end)
+
+Options.ColorPicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
+
+-- Label:AddKeyPicker
+-- Arguments: Idx, Info
+
+LeftGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
+    -- SyncToggleState only works with toggles.
+    -- It allows you to make a keybind which has its state synced with its parent toggle
+
+    -- Example: Keybind which you use to toggle flyhack, etc.
+    -- Changing the toggle disables the keybind state and toggling the keybind switches the toggle state
+
+    Default = 'MB2', -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+    SyncToggleState = false,
+
+
+    -- You can define custom Modes but I have never had a use for it.
+    Mode = 'Toggle', -- Modes: Always, Toggle, Hold
+
+    Text = 'Auto lockpick safes', -- Text to display in the keybind menu
+    NoUI = false, -- Set to true if you want to hide from the Keybind menu,
+
+    -- Occurs when the keybind is clicked, Value is `true`/`false`
+    Callback = function(Value)
+        print('[cb] Keybind clicked!', Value)
+    end,
+
+    -- Occurs when the keybind itself is changed, `New` is a KeyCode Enum OR a UserInputType Enum
+    ChangedCallback = function(New)
+        print('[cb] Keybind changed!', New)
+    end
+})
+
+-- OnClick is only fired when you press the keybind and the mode is Toggle
+-- Otherwise, you will have to use Keybind:GetState()
+Options.KeyPicker:OnClick(function()
+    print('Keybind clicked!', Options.KeyPicker:GetState())
+end)
+
+Options.KeyPicker:OnChanged(function()
+    print('Keybind changed!', Options.KeyPicker.Value)
+end)
+
+task.spawn(function()
+    while true do
+        wait(1)
+
+        -- example for checking if a keybind is being pressed
+        local state = Options.KeyPicker:GetState()
+        if state then
+            print('KeyPicker is being held down')
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+Options.KeyPicker:SetValue({ 'MB2', 'Toggle' }) -- Sets keybind to MB2, mode to Hold
+
+-- Long text label to demonstrate UI scrolling behaviour.
+local LeftGroupBox2 = Tabs.Main:AddLeftGroupbox('Groupbox #2');
+LeftGroupBox2:AddLabel('Oh no...\nThis label spans multiple lines!\n\nWe\'re gonna run out of UI space...\nJust kidding! Scroll down!\n\n\nHello from below!', true)
+
+local TabBox = Tabs.Main:AddRightTabbox() -- Add Tabbox on right side
+
+-- Anything we can do in a Groupbox, we can do in a Tabbox tab (AddToggle, AddSlider, AddLabel, etc etc...)
+local Tab1 = TabBox:AddTab('Tab 1')
+Tab1:AddToggle('Tab1Toggle', { Text = 'Tab1 Toggle' });
+
+local Tab2 = TabBox:AddTab('Tab 2')
+Tab2:AddToggle('Tab2Toggle', { Text = 'Tab2 Toggle' });
+
+-- Dependency boxes let us control the visibility of UI elements depending on another UI elements state.
+-- e.g. we have a 'Feature Enabled' toggle, and we only want to show that features sliders, dropdowns etc when it's enabled!
+-- Dependency box example:
+local RightGroupbox = Tabs.Main:AddRightGroupbox('Groupbox #3');
+RightGroupbox:AddToggle('ControlToggle', { Text = 'Dependency box toggle' });
+
+local Depbox = RightGroupbox:AddDependencyBox();
+Depbox:AddToggle('DepboxToggle', { Text = 'Sub-dependency box toggle' });
+
+-- We can also nest dependency boxes!
+-- When we do this, our SupDepbox automatically relies on the visiblity of the Depbox - on top of whatever additional dependencies we set
+local SubDepbox = Depbox:AddDependencyBox();
+SubDepbox:AddSlider('DepboxSlider', { Text = 'Slider', Default = 50, Min = 0, Max = 100, Rounding = 0 });
+SubDepbox:AddDropdown('DepboxDropdown', { Text = 'Dropdown', Default = 1, Values = {'a', 'b', 'c'} });
+
+Depbox:SetupDependencies({
+    { Toggles.ControlToggle, true } -- We can also pass `false` if we only want our features to show when the toggle is off!
+});
+
+SubDepbox:SetupDependencies({
+    { Toggles.DepboxToggle, true }
+});
+
+-- Library functions
+-- Sets the watermark visibility
+Library:SetWatermarkVisibility(true)
+
+-- Example of dynamically-updating watermark with common traits (fps and ping)
+local FrameTimer = tick()
+local FrameCounter = 0;
+local FPS = 60;
+
+local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
+    FrameCounter += 1;
+
+    if (tick() - FrameTimer) >= 1 then
+        FPS = FrameCounter;
+        FrameTimer = tick();
+        FrameCounter = 0;
+    end;
+
+    Library:SetWatermark(('LinoriaLib demo | %s fps | %s ms'):format(
+        math.floor(FPS),
+        math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
+    ));
+end);
+
+Library.KeybindFrame.Visible = true; -- todo: add a function for this
+
+Library:OnUnload(function()
+    WatermarkConnection:Disconnect()
+
+    print('Unloaded!')
+    Library.Unloaded = true
+end)
+
+-- UI Settings
+local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
+
+-- I set NoUI so it does not show up in the keybinds menu
+MenuGroup:AddButton('Unload', function() Library:Unload() end)
+MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'RightShift', NoUI = true, Text = 'Menu keybind' })
+
+Library.ToggleKeybind = Options.MenuKeybind -- Allows you to have a custom keybind for the menu
+
+-- Addons:
+-- SaveManager (Allows you to have a configuration system)
+-- ThemeManager (Allows you to have a menu theme system)
+
+-- Hand the library over to our managers
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+
+-- Ignore keys that are used by ThemeManager.
+-- (we dont want configs to save themes, do we?)
+SaveManager:IgnoreThemeSettings()
+
+-- Adds our MenuKeybind to the ignore list
+-- (do you want each config to have a different menu key? probably not.)
+SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
+
+-- use case for doing it this way:
+-- a script hub could have themes in a global folder
+-- and game configs in a separate folder per game
+ThemeManager:SetFolder('MyScriptHub')
+SaveManager:SetFolder('MyScriptHub/specific-game')
+
+-- Builds our config menu on the right side of our tab
+SaveManager:BuildConfigSection(Tabs['UI Settings'])
+
+-- Builds our theme menu (with plenty of built in themes) on the left side
+-- NOTE: you can also call ThemeManager:ApplyToGroupbox to add it to a specific groupbox
+ThemeManager:ApplyToTab(Tabs['UI Settings'])
+
+-- You can use the SaveManager:LoadAutoloadConfig() to load a config
+-- which has been marked to be one that auto loads!
+SaveManager:LoadAutoloadConfig()
